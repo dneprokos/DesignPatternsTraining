@@ -43,6 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FactoryMethod\AirConditioner.cs" />
+    <Compile Include="FactoryMethod\AirConditionerFactory.cs" />
+    <Compile Include="FactoryMethod\Cooling.cs" />
+    <Compile Include="FactoryMethod\CoolingFactory.cs" />
+    <Compile Include="FactoryMethod\IAirConditioner.cs" />
+    <Compile Include="FactoryMethod\Warming.cs" />
+    <Compile Include="FactoryMethod\WarmingFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Singleton\ISingletonContainer.cs" />
