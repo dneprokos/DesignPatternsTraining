@@ -2,9 +2,10 @@
 {
     public class GoogleOAuthService
     {
-        public GoogleOAuthResult RegisterUser(string emailAddress, string password)
+        public string ConfirmationMessage;
+        public GoogleOAuthService RegisterUser(string emailAddress, string password)
         {
-            //Register a new user
+            return this;
         }
     }
 }

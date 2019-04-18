@@ -43,6 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractFactoryDesignPattern\AbstractFactory\IMobilePhone.cs" />
+    <Compile Include="AbstractFactoryDesignPattern\AbstractProduct\INormalPhone.cs" />
+    <Compile Include="AbstractFactoryDesignPattern\AbstractProduct\ISmartPhone.cs" />
+    <Compile Include="AbstractFactoryDesignPattern\ConcreteFactory\Nokia.cs" />
+    <Compile Include="AbstractFactoryDesignPattern\ConcreteFactory\Samsung.cs" />
+    <Compile Include="AbstractFactoryDesignPattern\MobileClient.cs" />
+    <Compile Include="AbstractFactoryDesignPattern\Product\Nokia1600.cs" />
+    <Compile Include="AbstractFactoryDesignPattern\Product\NokiaPixel.cs" />
+    <Compile Include="AbstractFactoryDesignPattern\Product\SamsungGalaxy.cs" />
+    <Compile Include="AbstractFactoryDesignPattern\Product\SamsungGuru.cs" />
     <Compile Include="BuilderDesignPattern\IProductStockReportBuilder.cs" />
     <Compile Include="BuilderDesignPattern\Product.cs" />
     <Compile Include="BuilderDesignPattern\ProductStockReport.cs" />
@@ -56,6 +66,7 @@
     <Compile Include="DependencyInjection\UserLogicInitial.cs" />
     <Compile Include="DependencyInjection\UserLogicMethodInjection.cs" />
     <Compile Include="DependencyInjection\UserLogicSetterInjection.cs" />
+    <Compile Include="CallDesignPattern.cs" />
     <Compile Include="FactoryMethodDesignPattern\AirConditioner.cs" />
     <Compile Include="FactoryMethodDesignPattern\AirConditionerFactory.cs" />
     <Compile Include="FactoryMethodDesignPattern\Cooling.cs" />
@@ -71,6 +82,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="LazyInitializationDesignPattern\" />
+    <Folder Include="ObjectPoolDesignPattern\" />
+    <Folder Include="PrototypeDesignPattern\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
