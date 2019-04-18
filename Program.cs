@@ -1,4 +1,5 @@
 ﻿using DesignPatternsTraining.BuilderDesignPattern;
+using DesignPatternsTraining.DependencyInjection;
 using DesignPatternsTraining.FactoryMethod;
 using DesignPatternsTraining.Singleton;
 using System;
@@ -27,6 +28,7 @@ namespace DesignPatternsTraining
 
 
             ////Builder Design Pattern
+            /*
             var products = new List<Product>
             {
                 new Product { Name = "Monitor", Price = 200.50 },
@@ -40,10 +42,24 @@ namespace DesignPatternsTraining
 
             var report = builder.GetReport();
             Console.WriteLine(report);
+            */
 
-            
+            ////Dependency Injection
+            //Constructor injection example
+            var googleEmailService = new GoogleEmailService();
+            var userLogicConstructorInjection = new UserLogicConstructorInjection(googleEmailService);
 
+            //Setter injection
+            OutlookEmailService outlookEmailService = new OutlookEmailService();
+            var userLogicSetter = new UserLogicSetterInjection()
+            {
+                EmailService = outlookEmailService
+            };
 
+            //Method injection
+            OutlookEmailService outlookEmailService2 = new OutlookEmailService();
+            var userLogicMethod = new UserLogicMethodInjection();
+            userLogicMethod.Register("test@test.com", "Test12345", outlookEmailService);
 
             Console.ReadLine();
         }

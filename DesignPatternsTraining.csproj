@@ -48,6 +48,14 @@
     <Compile Include="BuilderDesignPattern\ProductStockReport.cs" />
     <Compile Include="BuilderDesignPattern\ProductStockReportBuilder .cs" />
     <Compile Include="BuilderDesignPattern\ProductStockReportDirector.cs" />
+    <Compile Include="DependencyInjection\IEmailService.cs" />
+    <Compile Include="DependencyInjection\GoogleEmailService.cs" />
+    <Compile Include="DependencyInjection\GoogleOAuthService.cs" />
+    <Compile Include="DependencyInjection\OutlookEmailService.cs" />
+    <Compile Include="DependencyInjection\UserLogicConstructorInjection.cs" />
+    <Compile Include="DependencyInjection\UserLogicInitial.cs" />
+    <Compile Include="DependencyInjection\UserLogicMethodInjection.cs" />
+    <Compile Include="DependencyInjection\UserLogicSetterInjection.cs" />
     <Compile Include="FactoryMethodDesignPattern\AirConditioner.cs" />
     <Compile Include="FactoryMethodDesignPattern\AirConditionerFactory.cs" />
     <Compile Include="FactoryMethodDesignPattern\Cooling.cs" />
