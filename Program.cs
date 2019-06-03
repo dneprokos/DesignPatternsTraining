@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace DesignPatternsTraining
 {
@@ -6,6 +9,7 @@ namespace DesignPatternsTraining
     {
         static void Main(string[] args)
         {
+            /*
             CallDesignPattern.Singleton();
 
             CallDesignPattern.Factory();
@@ -15,6 +19,21 @@ namespace DesignPatternsTraining
             CallDesignPattern.DependencyInjection();
 
             CallDesignPattern.AbstractFactory();
+
+            CallDesignPattern.PoolObjectCall();
+
+            CallDesignPattern.Prototype();
+
+            CallDesignPattern.Adapter();
+
+            CallDesignPattern.Bridge();
+
+            CallDesignPattern.Composite();
+
+            CallDesignPattern.Decorator();
+
+            CallDesignPattern.FacadeCall();
+            */
 
             Console.ReadLine();
         }
