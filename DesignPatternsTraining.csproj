@@ -53,11 +53,22 @@
     <Compile Include="AbstractFactoryDesignPattern\Product\NokiaPixel.cs" />
     <Compile Include="AbstractFactoryDesignPattern\Product\SamsungGalaxy.cs" />
     <Compile Include="AbstractFactoryDesignPattern\Product\SamsungGuru.cs" />
+    <Compile Include="AdapterPattern\Adaptee.cs" />
+    <Compile Include="AdapterPattern\Adapter.cs" />
+    <Compile Include="AdapterPattern\Target.cs" />
+    <Compile Include="BridgePattern\Abstraction.cs" />
+    <Compile Include="BridgePattern\ConcreateImplementorA.cs" />
+    <Compile Include="BridgePattern\ConcreateImplementorB.cs" />
+    <Compile Include="BridgePattern\Implementor.cs" />
+    <Compile Include="BridgePattern\RefinedAbstraction.cs" />
     <Compile Include="BuilderDesignPattern\IProductStockReportBuilder.cs" />
     <Compile Include="BuilderDesignPattern\Product.cs" />
     <Compile Include="BuilderDesignPattern\ProductStockReport.cs" />
     <Compile Include="BuilderDesignPattern\ProductStockReportBuilder .cs" />
     <Compile Include="BuilderDesignPattern\ProductStockReportDirector.cs" />
+    <Compile Include="CompositePattern\Component.cs" />
+    <Compile Include="CompositePattern\Composite.cs" />
+    <Compile Include="CompositePattern\Leaf.cs" />
     <Compile Include="DependencyInjection\IEmailService.cs" />
     <Compile Include="DependencyInjection\GoogleEmailService.cs" />
     <Compile Include="DependencyInjection\GoogleOAuthService.cs" />
@@ -67,6 +78,16 @@
     <Compile Include="DependencyInjection\UserLogicMethodInjection.cs" />
     <Compile Include="DependencyInjection\UserLogicSetterInjection.cs" />
     <Compile Include="CallDesignPattern.cs" />
+    <Compile Include="DecoratorDesignPattern\AbstractComponent.cs" />
+    <Compile Include="DecoratorDesignPattern\AbstractDecorator.cs" />
+    <Compile Include="DecoratorDesignPattern\ConcreateDecoratorA.cs" />
+    <Compile Include="DecoratorDesignPattern\ConcreateDecoratorB.cs" />
+    <Compile Include="DecoratorDesignPattern\ConcreteComponent.cs" />
+    <Compile Include="FacadeDesignPattern\Facade.cs" />
+    <Compile Include="FacadeDesignPattern\SubSystemFour.cs" />
+    <Compile Include="FacadeDesignPattern\SubSystemOne.cs" />
+    <Compile Include="FacadeDesignPattern\SubSystemThree.cs" />
+    <Compile Include="FacadeDesignPattern\SubSystemTwo.cs" />
     <Compile Include="FactoryMethodDesignPattern\AirConditioner.cs" />
     <Compile Include="FactoryMethodDesignPattern\AirConditionerFactory.cs" />
     <Compile Include="FactoryMethodDesignPattern\Cooling.cs" />
@@ -88,12 +109,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AdapterPattern\" />
-    <Folder Include="BridgePattern\" />
-    <Folder Include="CompositePattern\" />
-    <Folder Include="DesignDecoratorPattern\" />
-    <Folder Include="FacadeDesignPattern\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
