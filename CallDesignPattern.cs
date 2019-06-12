@@ -2,14 +2,19 @@
 using DesignPatternsTraining.AdapterPattern;
 using DesignPatternsTraining.BridgePattern;
 using DesignPatternsTraining.BuilderDesignPattern;
+using DesignPatternsTraining.ChainOfResponsibility;
 using DesignPatternsTraining.CompositePattern;
+using DesignPatternsTraining.CompositePattern.SecondApproach;
+using DesignPatternsTraining.DecoratorDesignPattern.SecondImplementation;
 using DesignPatternsTraining.DependencyInjection;
 using DesignPatternsTraining.DesignDecoratorPattern;
 using DesignPatternsTraining.FacadeDesignPattern;
 using DesignPatternsTraining.FactoryMethod;
+using DesignPatternsTraining.Flyweight;
 using DesignPatternsTraining.LazyInitializationDesignPattern;
 using DesignPatternsTraining.PoolObjectDesignPattern;
 using DesignPatternsTraining.PrototypeDesignPattern;
+using DesignPatternsTraining.Proxy;
 using DesignPatternsTraining.Singleton;
 using System;
 using System.Collections.Generic;
@@ -160,6 +165,28 @@ namespace DesignPatternsTraining
             root.Display(1);
         }
 
+        public static void CompositeTwoOrMusicGenerator()
+        {
+            SongComponent industrialMusic = new SongGroup("Industrial", "Some industial music");
+            SongComponent heavyMetalMusic = new SongGroup("Heavy Metal Music", "Some Heavy Metal Music");
+
+            SongComponent everySong = new SongGroup("Song list", "Every Song Available");
+
+            everySong.Add(industrialMusic);
+
+            industrialMusic.Add(new Song("Some Hit", "LALA", 1990));
+            industrialMusic.Add(new Song("Some other Hit", "LOLO", 1990));
+
+            industrialMusic.Add(heavyMetalMusic);
+
+            heavyMetalMusic.Add(new Song("Hard Rock Aliluia", "Hard", 1980));
+            heavyMetalMusic.Add(new Song("Hard Rock Aliluia 2", "Hard2", 1981));
+
+            DiskJokey crazyKostas = new DiskJokey(everySong);
+
+            crazyKostas.GetSongList();
+        }
+
         public static void Decorator()
         {
             // Create ConcreteComponent and two Decorators
@@ -176,12 +203,72 @@ namespace DesignPatternsTraining
             d2.Operation();
         }
 
+        public static void DecoratorTwoOrPizzaMaker()
+        {
+            PlainPizza pizza = new TomatoSauce(new Mozzarella(new PlainPizza()));
+            Console.WriteLine(pizza.getDescription());
+            Console.WriteLine(pizza.getCost());
+        }
+
         public static void FacadeCall()
         {
             Facade facade = new Facade();
 
             facade.MethodA();
             facade.MethodB();
+        }
+
+        public static void Flyweight()
+        {
+            Console.WriteLine("Please enter your slider order (use characters B, V, Z with no spaces):");
+            var order = Console.ReadLine();
+            char[] chars = order.ToCharArray();
+
+            SliderFactory factory = new SliderFactory();
+
+            int orderTotal = 0;
+
+            //Get the slider from the factory
+            foreach (char c in chars)
+            {
+                orderTotal++;
+                Slider character = factory.GetSlider(c);
+                character.Display(orderTotal);
+            }
+        }
+
+        public static void Proxy()
+        {
+            var proxy = new NewServerProxy();
+            var order = "Order_01"; 
+            proxy.TakeOrder(order);
+            proxy.DeliverOrder();
+            proxy.TakeOrder(order);
+        }
+
+        public static void ChainOfResponsibility()
+        {
+            //Create the chain links
+            Approver jennifer = new HeadChef();
+            Approver mitchell = new PurchasingManager();
+            Approver olivia = new GeneralManager();
+
+            //Create the chain
+            jennifer.SetSupervisor(mitchell);
+            mitchell.SetSupervisor(olivia);
+
+            // Generate and process purchase requests
+            PurchaseOrder p = new PurchaseOrder(1, 20, 69, "Spices");
+            jennifer.ProcessRequest(p);
+
+            p = new PurchaseOrder(2, 300, 1389, "Fresh Veggies");
+            jennifer.ProcessRequest(p);
+
+            p = new PurchaseOrder(3, 500, 4823.99, "Beef");
+            jennifer.ProcessRequest(p);
+
+            p = new PurchaseOrder(4, 4, 12099, "Ovens");
+            jennifer.ProcessRequest(p);
         }
     }
 }

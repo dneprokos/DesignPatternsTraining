@@ -33,7 +33,17 @@ namespace DesignPatternsTraining
             CallDesignPattern.Decorator();
 
             CallDesignPattern.FacadeCall();
+
+            CallDesignPattern.DecoratorTwoOrPizzaMaker();
+
+            CallDesignPattern.CompositeTwoOrMusicGenerator();
+
+            CallDesignPattern.Flyweight();
+
+            CallDesignPattern.Proxy();
             */
+
+            CallDesignPattern.ChainOfResponsibility();
 
             Console.ReadLine();
         }

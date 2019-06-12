@@ -66,9 +66,23 @@
     <Compile Include="BuilderDesignPattern\ProductStockReport.cs" />
     <Compile Include="BuilderDesignPattern\ProductStockReportBuilder .cs" />
     <Compile Include="BuilderDesignPattern\ProductStockReportDirector.cs" />
+    <Compile Include="ChainOfResponsibility\Approver.cs" />
+    <Compile Include="ChainOfResponsibility\GeneralManager.cs" />
+    <Compile Include="ChainOfResponsibility\HeadChef.cs" />
+    <Compile Include="ChainOfResponsibility\PurchaseOrder.cs" />
+    <Compile Include="ChainOfResponsibility\PurchasingManager.cs" />
     <Compile Include="CompositePattern\Component.cs" />
     <Compile Include="CompositePattern\Composite.cs" />
     <Compile Include="CompositePattern\Leaf.cs" />
+    <Compile Include="CompositePattern\SecondApproach\DiskJokey.cs" />
+    <Compile Include="CompositePattern\SecondApproach\Song.cs" />
+    <Compile Include="CompositePattern\SecondApproach\SongComponent.cs" />
+    <Compile Include="CompositePattern\SecondApproach\SongGroup.cs" />
+    <Compile Include="DecoratorDesignPattern\SecondImplementation\IPizza.cs" />
+    <Compile Include="DecoratorDesignPattern\SecondImplementation\Mozzarella.cs" />
+    <Compile Include="DecoratorDesignPattern\SecondImplementation\PlainPizza.cs" />
+    <Compile Include="DecoratorDesignPattern\SecondImplementation\TomatoSauce.cs" />
+    <Compile Include="DecoratorDesignPattern\SecondImplementation\TopingDecorator.cs" />
     <Compile Include="DependencyInjection\IEmailService.cs" />
     <Compile Include="DependencyInjection\GoogleEmailService.cs" />
     <Compile Include="DependencyInjection\GoogleOAuthService.cs" />
@@ -95,6 +109,11 @@
     <Compile Include="FactoryMethodDesignPattern\IAirConditioner.cs" />
     <Compile Include="FactoryMethodDesignPattern\Warming.cs" />
     <Compile Include="FactoryMethodDesignPattern\WarmingFactory.cs" />
+    <Compile Include="Flyweight\BaconMaster.cs" />
+    <Compile Include="Flyweight\BBQKing.cs" />
+    <Compile Include="Flyweight\Slider.cs" />
+    <Compile Include="Flyweight\SliderFactory.cs" />
+    <Compile Include="Flyweight\VeggieSlider.cs" />
     <Compile Include="LazyInitializationDesignPattern\LazyBeforeDotNet4.cs" />
     <Compile Include="PoolObjectDesignPattern\Pool.cs" />
     <Compile Include="PoolObjectDesignPattern\PooledObject.cs" />
@@ -103,6 +122,9 @@
     <Compile Include="PrototypeDesignPattern\ConcretePrototype1.cs" />
     <Compile Include="PrototypeDesignPattern\ConcretePrototype2.cs" />
     <Compile Include="PrototypeDesignPattern\Prototype.cs" />
+    <Compile Include="Proxy\IServer.cs" />
+    <Compile Include="Proxy\NewServerProxy.cs" />
+    <Compile Include="Proxy\Server.cs" />
     <Compile Include="SingletonDesignPattern\ISingletonContainer.cs" />
     <Compile Include="SingletonDesignPattern\SingletonDataContainer.cs" />
   </ItemGroup>
