@@ -3,6 +3,7 @@ using DesignPatternsTraining.AdapterPattern;
 using DesignPatternsTraining.BridgePattern;
 using DesignPatternsTraining.BuilderDesignPattern;
 using DesignPatternsTraining.ChainOfResponsibility;
+using DesignPatternsTraining.CommandDesignPattern;
 using DesignPatternsTraining.CompositePattern;
 using DesignPatternsTraining.CompositePattern.SecondApproach;
 using DesignPatternsTraining.DecoratorDesignPattern.SecondImplementation;
@@ -11,6 +12,8 @@ using DesignPatternsTraining.DesignDecoratorPattern;
 using DesignPatternsTraining.FacadeDesignPattern;
 using DesignPatternsTraining.FactoryMethod;
 using DesignPatternsTraining.Flyweight;
+using DesignPatternsTraining.InterpreterDesignPattern;
+using DesignPatternsTraining.IteratorDesignPattern;
 using DesignPatternsTraining.LazyInitializationDesignPattern;
 using DesignPatternsTraining.PoolObjectDesignPattern;
 using DesignPatternsTraining.PrototypeDesignPattern;
@@ -270,5 +273,83 @@ namespace DesignPatternsTraining
             p = new PurchaseOrder(4, 4, 12099, "Ovens");
             jennifer.ProcessRequest(p);
         }
+
+        public static void CommandDesignPattern()
+        {
+            Patron patron = new Patron();
+            patron.SetCommand(1 /*Add*/);
+            patron.SetMenuItem(new MenuItem("French Fries", 2, 1.99));
+            patron.ExecuteCommand();
+
+            patron.SetCommand(1 /*Add*/);
+            patron.SetMenuItem(new MenuItem("Hamburger", 2, 2.59));
+            patron.ExecuteCommand();
+
+            patron.SetCommand(1 /*Add*/);
+            patron.SetMenuItem(new MenuItem("Drink", 2, 1.19));
+            patron.ExecuteCommand();
+
+            patron.ShowCurrentOrder();
+
+            //Remove the french fries
+            patron.SetCommand(3 /*Remove*/);
+            patron.SetMenuItem(new MenuItem("French Fries", 2, 1.99));
+            patron.ExecuteCommand();
+
+            patron.ShowCurrentOrder();
+
+            //Now we want 4 hamburgers rather than 2
+            patron.SetCommand(2 /*Edit*/);
+            patron.SetMenuItem(new MenuItem("Hamburger", 4, 2.59));
+            patron.ExecuteCommand();
+
+            patron.ShowCurrentOrder();
+        }
+
+        public static void Interpreter()
+        {
+            IExpression person1 = new TerminalExpression("Kushagra");
+            IExpression person2 = new TerminalExpression("Lokesh");
+            IExpression isSingle = new OrExpression(person1, person2);
+
+            IExpression vikram = new TerminalExpression("Vikram");
+            IExpression committed = new TerminalExpression("Committed");
+            IExpression isCommitted = new AndExpression(vikram, committed);
+
+            Console.WriteLine(isSingle.interpreter("Kushagra"));
+            Console.WriteLine(isSingle.interpreter("Lokesh"));
+            Console.WriteLine(isSingle.interpreter("Achint"));
+
+            Console.WriteLine(isCommitted.interpreter("Committed, Vikram"));
+            Console.WriteLine(isCommitted.interpreter("Single, Vikram"));
+        }
+
+        public static void Iterator()
+        {
+            // Build a collection of jelly beans
+            JellyBeanCollection collection = new JellyBeanCollection();
+            collection[0] = new JellyBean("Cherry");
+            collection[1] = new JellyBean("Bubble Gum");
+            collection[2] = new JellyBean("Root Beer");
+            collection[3] = new JellyBean("French Vanilla");
+            collection[4] = new JellyBean("Licorice");
+            collection[5] = new JellyBean("Buttered Popcorn");
+            collection[6] = new JellyBean("Juicy Pear");
+            collection[7] = new JellyBean("Cinnamon");
+            collection[8] = new JellyBean("Coconut");
+
+            // Create iterator
+            JellyBeanIterator iterator = collection.CreateIterator();
+
+            Console.WriteLine("Gimme all the jelly beans!");
+
+            for (JellyBean item = iterator.First();
+                !iterator.IsDone; item = iterator.Next())
+            {
+                Console.WriteLine(item.Flavor);
+            }
+        }
+
+        
     }
 }

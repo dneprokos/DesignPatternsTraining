@@ -41,9 +41,13 @@ namespace DesignPatternsTraining
             CallDesignPattern.Flyweight();
 
             CallDesignPattern.Proxy();
-            */
 
             CallDesignPattern.ChainOfResponsibility();
+            */
+
+            //CallDesignPattern.CommandDesignPattern();
+            //CallDesignPattern.Interpreter();
+            CallDesignPattern.Iterator();
 
             Console.ReadLine();
         }
