@@ -14,6 +14,11 @@ namespace DesignPatternsTraining.CommandDesignPattern
             currentItems = new List<MenuItem>();
         }
 
+        public FastFoodOrder(List<MenuItem> menuItems)
+        {
+            currentItems = menuItems;
+        }
+
         public void ExecuteCommand(OrderCommand command, MenuItem item)
         {
             command.Execute(this.currentItems, item);
