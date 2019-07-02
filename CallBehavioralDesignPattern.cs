@@ -1,6 +1,10 @@
 ﻿using DesignPatternsTraining._BehavioralPatterns.MediatorDesignPattern;
 using DesignPatternsTraining._BehavioralPatterns.MementoDesignPattern;
 using DesignPatternsTraining._BehavioralPatterns.ObserverDesignPattern;
+using DesignPatternsTraining._BehavioralPatterns.StateDesignPattern;
+using DesignPatternsTraining._BehavioralPatterns.StrategyDesignPattern;
+using DesignPatternsTraining._BehavioralPatterns.StrategyDesignPattern.StrategyImplementations;
+using DesignPatternsTraining._BehavioralPatterns.TemplateDesignPattern.Concreate;
 using DesignPatternsTraining.ChainOfResponsibility;
 using DesignPatternsTraining.CommandDesignPattern;
 using DesignPatternsTraining.InterpreterDesignPattern;
@@ -159,6 +163,72 @@ namespace DesignPatternsTraining
             carrots.PricePerPound = 0.76;
             carrots.PricePerPound = 0.74;
             carrots.PricePerPound = 0.81;
+        }
+
+        public static void State()
+        {
+            //Let's cook a steak!
+            Steak account = new Steak("T-Bone");
+
+            // Apply temperature changes
+            account.AddTemp(120);
+            account.AddTemp(15);
+            account.AddTemp(15);
+            account.RemoveTemp(10); //Yes I know cooking doesn't work this way, bear with me.
+            account.RemoveTemp(15);
+            account.AddTemp(20);
+            account.AddTemp(20);
+            account.AddTemp(20);
+        }
+
+        public static void Strategy()
+        {
+            CookingMethod cookMethod = new CookingMethod();
+
+            Console.WriteLine("What food would you like to cook?");
+            var food = Console.ReadLine();
+            cookMethod.SetFood(food);
+
+            Console.WriteLine("What cooking strategy would you like to use (1-3)?" +
+                "\n Please choise: " + 
+                "\n\n  1 - Grilling" +
+                "\n  2 - Oven Baking" +
+                "\n  3 - DeepFrying");
+            int input = int.Parse(Console.ReadKey().KeyChar.ToString());
+
+            switch (input)
+            {
+                case 1:
+                    cookMethod.SetCookStrategy(new Grilling());
+                    cookMethod.Cook();
+                    break;
+
+                case 2:
+                    cookMethod.SetCookStrategy(new OvenBaking());
+                    cookMethod.Cook();
+                    break;
+
+                case 3:
+                    cookMethod.SetCookStrategy(new DeepFrying());
+                    cookMethod.Cook();
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid Selection!");
+                    break;
+            }
+        }
+
+        public static void Template()
+        {
+            Sourdough sourdough = new Sourdough();
+            sourdough.Make();
+
+            TwelveGrain twelveGrain = new TwelveGrain();
+            twelveGrain.Make();
+
+            WholeWheat wholeWheat = new WholeWheat();
+            wholeWheat.Make();
         }
     }
 }

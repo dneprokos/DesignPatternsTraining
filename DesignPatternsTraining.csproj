@@ -58,6 +58,22 @@
     <Compile Include="_BehavioralPatterns\ObserverDesignPattern\IRestaurant.cs" />
     <Compile Include="_BehavioralPatterns\ObserverDesignPattern\Restaurant.cs" />
     <Compile Include="_BehavioralPatterns\ObserverDesignPattern\Veggies.cs" />
+    <Compile Include="_BehavioralPatterns\StateDesignPattern\Abstarct\Doneness.cs" />
+    <Compile Include="_BehavioralPatterns\StateDesignPattern\StateClasses\Medium.cs" />
+    <Compile Include="_BehavioralPatterns\StateDesignPattern\StateClasses\MediumRare.cs" />
+    <Compile Include="_BehavioralPatterns\StateDesignPattern\StateClasses\Rare.cs" />
+    <Compile Include="_BehavioralPatterns\StateDesignPattern\StateClasses\Uncooked.cs" />
+    <Compile Include="_BehavioralPatterns\StateDesignPattern\StateClasses\WellDone.cs" />
+    <Compile Include="_BehavioralPatterns\StateDesignPattern\Steak.cs" />
+    <Compile Include="_BehavioralPatterns\StrategyDesignPattern\Abstract\CookStrategy.cs" />
+    <Compile Include="_BehavioralPatterns\StrategyDesignPattern\CookingMethod.cs" />
+    <Compile Include="_BehavioralPatterns\StrategyDesignPattern\StrategyImplementations\DeepFrying.cs" />
+    <Compile Include="_BehavioralPatterns\StrategyDesignPattern\StrategyImplementations\Grilling.cs" />
+    <Compile Include="_BehavioralPatterns\StrategyDesignPattern\StrategyImplementations\OvenBaking.cs" />
+    <Compile Include="_BehavioralPatterns\TemplateDesignPattern\Abstract\Bread.cs" />
+    <Compile Include="_BehavioralPatterns\TemplateDesignPattern\Concreate\SourDough.cs" />
+    <Compile Include="_BehavioralPatterns\TemplateDesignPattern\Concreate\TwelveGrain.cs" />
+    <Compile Include="_BehavioralPatterns\TemplateDesignPattern\Concreate\WholeWheat.cs" />
     <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern\AbstractFactory\IMobilePhone.cs" />
     <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern\AbstractProduct\INormalPhone.cs" />
     <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern\AbstractProduct\ISmartPhone.cs" />
@@ -166,9 +182,6 @@
   <ItemGroup>
     <Folder Include="_BehavioralPatterns\NullObjectDesignPattern\" />
     <Folder Include="_BehavioralPatterns\RepositoryDesignPattern\" />
-    <Folder Include="_BehavioralPatterns\StateDesignPattern\" />
-    <Folder Include="_BehavioralPatterns\StrategyDesignPattern\" />
-    <Folder Include="_BehavioralPatterns\TemplateDesignPattern\" />
     <Folder Include="_BehavioralPatterns\VisitorDesignPattern\" />
     <Folder Include="_ConcurrencyPatterns\LockDesignPattern\" />
   </ItemGroup>
