@@ -6,6 +6,8 @@ namespace DesignPatternsTraining
     {
         static void Main(string[] args)
         {
+            CallBehavioralDesignPattern.Template();
+
             Console.ReadLine();
         }
     }

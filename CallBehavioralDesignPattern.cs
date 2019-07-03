@@ -3,6 +3,7 @@ using DesignPatternsTraining._BehavioralPatterns.MementoDesignPattern;
 using DesignPatternsTraining._BehavioralPatterns.ObserverDesignPattern;
 using DesignPatternsTraining._BehavioralPatterns.StateDesignPattern;
 using DesignPatternsTraining._BehavioralPatterns.StrategyDesignPattern;
+using DesignPatternsTraining._BehavioralPatterns.StrategyDesignPattern.Abstract;
 using DesignPatternsTraining._BehavioralPatterns.StrategyDesignPattern.StrategyImplementations;
 using DesignPatternsTraining._BehavioralPatterns.TemplateDesignPattern.Concreate;
 using DesignPatternsTraining.ChainOfResponsibility;
@@ -199,18 +200,15 @@ namespace DesignPatternsTraining
             switch (input)
             {
                 case 1:
-                    cookMethod.SetCookStrategy(new Grilling());
-                    cookMethod.Cook();
+                    StartCookingWithStrategy(cookMethod, new Grilling());
                     break;
 
                 case 2:
-                    cookMethod.SetCookStrategy(new OvenBaking());
-                    cookMethod.Cook();
+                    StartCookingWithStrategy(cookMethod, new OvenBaking());
                     break;
 
                 case 3:
-                    cookMethod.SetCookStrategy(new DeepFrying());
-                    cookMethod.Cook();
+                    StartCookingWithStrategy(cookMethod, new DeepFrying());
                     break;
 
                 default:
@@ -230,5 +228,16 @@ namespace DesignPatternsTraining
             WholeWheat wholeWheat = new WholeWheat();
             wholeWheat.Make();
         }
+
+
+        #region Helpers
+
+        private static void StartCookingWithStrategy(CookingMethod cookMethod, CookStrategy cookStrategy)
+        {
+            cookMethod.SetCookStrategy(cookStrategy);
+            cookMethod.Cook();
+        }
+
+        #endregion
     }
 }
