@@ -30,8 +30,8 @@ namespace DesignPatternsTraining
 
         public static void SingletonSimpleExample()
         {
-            var db = SingletonSimple.Instance;
-            var db2 = SingletonSimple.Instance;
+            SingletonSimple db = SingletonSimple.Instance;
+            SingletonSimple db2 = SingletonSimple.Instance;
 
             Console.WriteLine("Population of Kyiv equals: " + db.GetPopulation("Kyiv"));
             Console.WriteLine("Population of London equals: " + db2.GetPopulation("London"));
@@ -39,8 +39,12 @@ namespace DesignPatternsTraining
             var test1 = "test1";
             var test2 = "test2";
 
-            Console.WriteLine(db.GetHashCode() == db2.GetHashCode());
-            Console.WriteLine(test1.GetHashCode() == test2.GetHashCode());
+            Console.WriteLine("\n########Compare hash codes#########\n");
+
+            Console.WriteLine("Is db hash code equal to db2 hashcode?: " 
+                + (db.GetHashCode() == db2.GetHashCode()));
+            Console.WriteLine("Is test1 hash code equal to test2 hashcode?: " 
+                + (test1.GetHashCode() == test2.GetHashCode()));
         }
 
         public static void LazyBeforeDotNet4Example()
