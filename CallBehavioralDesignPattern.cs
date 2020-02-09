@@ -1,11 +1,16 @@
 ﻿using DesignPatternsTraining._BehavioralPatterns.MediatorDesignPattern;
 using DesignPatternsTraining._BehavioralPatterns.MementoDesignPattern;
+using DesignPatternsTraining._BehavioralPatterns.NullObjectDesignPattern.Implementations;
 using DesignPatternsTraining._BehavioralPatterns.ObserverDesignPattern;
+using DesignPatternsTraining._BehavioralPatterns.RepositoryDesignPattern.Databases;
+using DesignPatternsTraining._BehavioralPatterns.RepositoryDesignPattern.Repository;
 using DesignPatternsTraining._BehavioralPatterns.StateDesignPattern;
 using DesignPatternsTraining._BehavioralPatterns.StrategyDesignPattern;
 using DesignPatternsTraining._BehavioralPatterns.StrategyDesignPattern.Abstract;
 using DesignPatternsTraining._BehavioralPatterns.StrategyDesignPattern.StrategyImplementations;
 using DesignPatternsTraining._BehavioralPatterns.TemplateDesignPattern.Concreate;
+using DesignPatternsTraining._BehavioralPatterns.VisitorDesignPattern.ConcreateVisitors;
+using DesignPatternsTraining._BehavioralPatterns.VisitorDesignPattern.Employees;
 using DesignPatternsTraining.ChainOfResponsibility;
 using DesignPatternsTraining.CommandDesignPattern;
 using DesignPatternsTraining.InterpreterDesignPattern;
@@ -227,6 +232,76 @@ namespace DesignPatternsTraining
 
             WholeWheat wholeWheat = new WholeWheat();
             wholeWheat.Make();
+        }
+
+        public static void Visitor()
+        {
+            // Who are my employees?
+            Employees e = new Employees();
+            e.Attach(new LineCookForVisitor());
+            e.Attach(new HeadChefForVisitor());
+            e.Attach(new GeneralManagerForVisitor());
+
+            // Employees are visited, giving them 10% raises and 3 extra paid time off days.
+            e.Accept(new IncomeVisitor());
+            e.Accept(new PaidTimeOffVisitor());
+        }
+
+        public static void NullObject()
+        {
+            BasicDiscount basicDiscount = new BasicDiscount();
+            NullDiscount nullDiscount = new NullDiscount();
+
+            Console.WriteLine("Please enter price");
+            double price = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Discount calculation... " + "\nIs user registered? YES/NO" );
+            string answer = Console.ReadLine().ToLowerInvariant();
+
+            switch (answer)
+            {
+                case "yes":
+                    Console.WriteLine("Customer discount eqauls: " + basicDiscount.Calculate(price));
+                    break;
+                case "no":
+                    Console.WriteLine("Customer discount eqauls: " + nullDiscount.Calculate(price));
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public static void Repository()
+        {
+            RepositoryEmulation repository = new RepositoryEmulation();
+            int id1 = 1;
+
+            Console.WriteLine("Adding two contacts..");
+            repository.SaveContact(new Contact().SetId(id1).SetName("Tolik").SetEmail("tolik@gmail.com"));
+            repository.SaveContact(new Contact().SetId(2).SetName("Anatolii").SetEmail("anatolii@gmail.com"));
+
+            Console.WriteLine("\nShowing all contacts");
+            foreach (var contact in repository.GetContacts())
+            {
+                contact.ShowContactData();
+            }
+
+            Console.WriteLine("\nSaving contact with already exists ID");
+            repository.SaveContact(new Contact().SetId(2).SetName("Vasia").SetEmail("vasia@gmail.com"));
+
+            Console.WriteLine("\nShowing contact with ID = " + id1);
+            repository.GetContactById(id1).ShowContactData();
+
+            Console.WriteLine("\nTrying to find contact by not exist ID");
+            Contact con = repository.GetContactById(99);
+            if (con == null)
+            {
+                Console.WriteLine("No contact with a such ID");
+            } 
+            else
+            {
+                con.ShowContactData();
+            }
         }
 
 

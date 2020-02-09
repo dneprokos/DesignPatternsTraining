@@ -1,14 +1,25 @@
 ﻿namespace DesignPatternsTraining.DependencyInjection
 {
-    public class UserLogicInitial
+    public class UserLogicSetterInjection
     {
         private GoogleOAuthService _authService;
         private IEmailService _emailService;
 
-        public UserLogicInitial()
+        public IEmailService EmailService
+        {
+            get
+            {
+                return _emailService;
+            }
+            set
+            {
+                _emailService = value;
+            }
+        }
+
+        public UserLogicSetterInjection()
         {
             _authService = new GoogleOAuthService();
-            _emailService = new OutlookEmailService(); // or Google;
         }
 
         public void Register(string emailAddress, string password)

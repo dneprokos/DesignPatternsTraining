@@ -6,6 +6,7 @@ namespace DesignPatternsTraining
     {
         static void Main(string[] args)
         {
+            CallCreationalDesignPattern.PoolObjectCall();
             Console.ReadLine();
         }
     }

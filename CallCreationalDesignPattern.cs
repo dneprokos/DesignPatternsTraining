@@ -1,4 +1,11 @@
-﻿using DesignPatternsTraining.AbstractFactoryDesignPattern;
+﻿using DesignPatternsTraining._CreationalPatterns.AbstractFactoryDesignPattern2.AbstractFactory;
+using DesignPatternsTraining._CreationalPatterns.AbstractFactoryDesignPattern2.ConcreateFactory;
+using DesignPatternsTraining._CreationalPatterns.BuilderDesignPatternWithPerson.MessageBuilderInterfaces;
+using DesignPatternsTraining._CreationalPatterns.BuilderDesignPatternWithPerson.MessageBuilders;
+using DesignPatternsTraining._CreationalPatterns.FactoryMethodPatternWebDriverCustom.AbstractProduct;
+using DesignPatternsTraining._CreationalPatterns.FactoryMethodPatternWebDriverCustom.WebDriverFactory;
+using DesignPatternsTraining._CreationalPatterns.SingletonDesignPattern.Simple;
+using DesignPatternsTraining.AbstractFactoryDesignPattern;
 using DesignPatternsTraining.BuilderDesignPattern;
 using DesignPatternsTraining.DependencyInjection;
 using DesignPatternsTraining.FactoryMethod;
@@ -13,12 +20,27 @@ namespace DesignPatternsTraining
 {
     public class CallCreationalDesignPattern
     {
-        public static void Singleton()
+        public static void SingletonWithLazyInitialization()
         {
-            var db = SingletonDataContainer.Instance;
+            var db = SingletonDataContainerWithLazyInit.Instance;
             Console.WriteLine(db.GetPopulation("Washington, D.C."));
-            var db2 = SingletonDataContainer.Instance;
+            var db2 = SingletonDataContainerWithLazyInit.Instance;
             Console.WriteLine(db2.GetPopulation("London"));
+        }
+
+        public static void SingletonSimpleExample()
+        {
+            var db = SingletonSimple.Instance;
+            var db2 = SingletonSimple.Instance;
+
+            Console.WriteLine("Population of Kyiv equals: " + db.GetPopulation("Kyiv"));
+            Console.WriteLine("Population of London equals: " + db2.GetPopulation("London"));
+
+            var test1 = "test1";
+            var test2 = "test2";
+
+            Console.WriteLine(db.GetHashCode() == db2.GetHashCode());
+            Console.WriteLine(test1.GetHashCode() == test2.GetHashCode());
         }
 
         public static void LazyBeforeDotNet4Example()
@@ -26,10 +48,20 @@ namespace DesignPatternsTraining
             LazyBeforeDotNet4 instance = LazyBeforeDotNet4.GetInstance();
         }
 
-        public static void Factory()
+        public static void FactoryMethod()
         {
             var factory = new AirConditioner().ExecuteCreation(Actions.Cooling, 22.5);
             factory.Operate();
+        }
+
+        public static void FactoryMethodWithWebDriverExample()
+        {
+            Console.WriteLine("Please select what driver do you want to use?");
+            string driverName = Console.ReadLine();
+            Console.WriteLine(driverName);
+
+            ICustomWebDriver driver = WebDriverFactory.CreateDriver(driverName);
+            driver.Quit();
         }
 
         public static void Builder()
@@ -47,6 +79,23 @@ namespace DesignPatternsTraining
 
             var report = builder.GetReport();
             Console.WriteLine(report);
+        }
+
+        public static void BuilderPatternDirector()
+        {
+            IOrderMessageBuilder buildDiscountOrder = 
+                new OrderMessageBuilder(new List<string> { "Iphone", "AitPods" })
+                .BuildDiscountOrder().SendMessage();
+            
+            IOrderMessageBuilder buildReatilOrder =
+                new OrderMessageBuilder(new List<string> { "Iphone", "AitPods" })
+                .BuildRetailOrder().SendMessage();
+
+
+            IOrderMessageBuilder buildLimitedOrder =
+                new OrderMessageBuilder(new List<string> { "Iphone", "AitPods" })
+                .BuildOrderType("Limited").SendMessage();
+
         }
 
         public static void DependencyInjection()
@@ -87,13 +136,49 @@ namespace DesignPatternsTraining
             Console.WriteLine(samsungClient.GetNormalPhoneModelDetails());
         }
 
+        public static void AbstractFactoryWithFood()
+        {
+            Console.WriteLine("Who are you? (A)dult or (C)hild?");
+            char input = Console.ReadKey().KeyChar;
+            RecipeFactory factory;
+            switch (input)
+            {
+                case 'A':
+                    factory = new AdultCuisineFactory();
+                    break;
+
+                case 'C':
+                    factory = new KidCuisineFactory();
+                    break;
+
+                default:
+                    throw new NotImplementedException();
+
+            }
+
+            var sandwich = factory.CreateSandwich();
+            var dessert = factory.CreateDessert();
+
+            Console.WriteLine("\nSandwich: " + sandwich.GetType().Name);
+            Console.WriteLine("Dessert: " + dessert.GetType().Name);
+        }
+
         public static void PoolObjectCall()
         {
+            //Get object first time and show data
             PooledObject po = Pool.GetObject();
             po.TempData = "Pool1";
             Console.WriteLine(po.TempData);
-
             Pool.ReleaseObject(po);
+
+            //Show data doesn't exits after relese
+            Console.WriteLine(po.TempData);
+
+            //Get object second time
+            PooledObject po2 = Pool.GetObject();
+            po2.TempData = "Pool2";
+            Console.WriteLine(po2.TempData);
+
         }
 
         public static void Prototype()

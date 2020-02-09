@@ -8,9 +8,10 @@
  
     // Returns a shallow copy
 
-    public override Prototype Clone()
-    {
-      return (Prototype)this.MemberwiseClone();
-    }
+        public override Prototype Clone()
+        {
+            return (Prototype)this.MemberwiseClone();
+            //return new ConcretePrototype1(this); JAVA EXAMPLE
+        }
     }
 }

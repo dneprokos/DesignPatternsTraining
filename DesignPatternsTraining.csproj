@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -76,10 +77,15 @@
     <Compile Include="_BehavioralPatterns\MementoDesignPattern\FoodSupplier.cs" />
     <Compile Include="_BehavioralPatterns\MementoDesignPattern\FoodSupplierMemento.cs" />
     <Compile Include="_BehavioralPatterns\MementoDesignPattern\SupplierMemory.cs" />
+    <Compile Include="_BehavioralPatterns\NullObjectDesignPattern\Implementations\BasicDiscount.cs" />
+    <Compile Include="_BehavioralPatterns\NullObjectDesignPattern\Implementations\NullDiscount.cs" />
+    <Compile Include="_BehavioralPatterns\NullObjectDesignPattern\Interface\IDiscount.cs" />
     <Compile Include="_BehavioralPatterns\ObserverDesignPattern\Carrots.cs" />
     <Compile Include="_BehavioralPatterns\ObserverDesignPattern\IRestaurant.cs" />
     <Compile Include="_BehavioralPatterns\ObserverDesignPattern\Restaurant.cs" />
     <Compile Include="_BehavioralPatterns\ObserverDesignPattern\Veggies.cs" />
+    <Compile Include="_BehavioralPatterns\RepositoryDesignPattern\DatabasesEmulation\Contacts.cs" />
+    <Compile Include="_BehavioralPatterns\RepositoryDesignPattern\Repository\RepositoryEmulation.cs" />
     <Compile Include="_BehavioralPatterns\StateDesignPattern\Abstarct\Doneness.cs" />
     <Compile Include="_BehavioralPatterns\StateDesignPattern\StateClasses\Medium.cs" />
     <Compile Include="_BehavioralPatterns\StateDesignPattern\StateClasses\MediumRare.cs" />
@@ -96,6 +102,24 @@
     <Compile Include="_BehavioralPatterns\TemplateDesignPattern\Concreate\SourDough.cs" />
     <Compile Include="_BehavioralPatterns\TemplateDesignPattern\Concreate\TwelveGrain.cs" />
     <Compile Include="_BehavioralPatterns\TemplateDesignPattern\Concreate\WholeWheat.cs" />
+    <Compile Include="_BehavioralPatterns\VisitorDesignPattern\AbstractAndInterfaces\Element.cs" />
+    <Compile Include="_BehavioralPatterns\VisitorDesignPattern\AbstractAndInterfaces\IVisitor.cs" />
+    <Compile Include="_BehavioralPatterns\VisitorDesignPattern\ConcreateVisitors\IncomeVisitor.cs" />
+    <Compile Include="_BehavioralPatterns\VisitorDesignPattern\ConcreateVisitors\PaidTimeOffVisitor.cs" />
+    <Compile Include="_BehavioralPatterns\VisitorDesignPattern\Employees\Employee.cs" />
+    <Compile Include="_BehavioralPatterns\VisitorDesignPattern\Employees\Employees.cs" />
+    <Compile Include="_BehavioralPatterns\VisitorDesignPattern\Employees\GeneralManagerForVisitor.cs" />
+    <Compile Include="_BehavioralPatterns\VisitorDesignPattern\Employees\HeadChefForVisitor.cs" />
+    <Compile Include="_BehavioralPatterns\VisitorDesignPattern\Employees\LineCookForVisitor.cs" />
+    <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern2\AbstractFactory\RecipeFactory.cs" />
+    <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern2\AbstractProductParticipants\Dessert.cs" />
+    <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern2\AbstractProductParticipants\Sandwich.cs" />
+    <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern2\ConcreateFactory\AdultCuisineFactory.cs" />
+    <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern2\ConcreateFactory\KidCuisineFactory .cs" />
+    <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern2\ConcreteProducts\Adults\Cheesesteak.cs" />
+    <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern2\ConcreteProducts\Adults\CremeBrulee.cs" />
+    <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern2\ConcreteProducts\Childs\GrilledCheese.cs" />
+    <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern2\ConcreteProducts\Childs\IceCreamSundae.cs" />
     <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern\AbstractFactory\IMobilePhone.cs" />
     <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern\AbstractProduct\INormalPhone.cs" />
     <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern\AbstractProduct\ISmartPhone.cs" />
@@ -106,6 +130,16 @@
     <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern\Product\NokiaPixel.cs" />
     <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern\Product\SamsungGalaxy.cs" />
     <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern\Product\SamsungGuru.cs" />
+    <Compile Include="_CreationalPatterns\BuilderDesignPatternWithPerson\InternalSystemNotPartOfThePattern\IdGeneratorStub.cs" />
+    <Compile Include="_CreationalPatterns\BuilderDesignPatternWithPerson\MessageBuilderInterfaces\IOrderMessageBuilder.cs" />
+    <Compile Include="_CreationalPatterns\BuilderDesignPatternWithPerson\MessageBuilders\OrderMessageBuilder.cs" />
+    <Compile Include="_CreationalPatterns\BuilderDesignPatternWithPerson\MessageInterface\IMessage.cs" />
+    <Compile Include="_CreationalPatterns\BuilderDesignPatternWithPerson\MessageObjects\OrderMessage.cs" />
+    <Compile Include="_CreationalPatterns\FactoryMethodPatternWebDriverCustom\AbstractProduct\IWebCustomDriver.cs" />
+    <Compile Include="_CreationalPatterns\FactoryMethodPatternWebDriverCustom\WebDriverFactory\WebDriverFactory.cs" />
+    <Compile Include="_CreationalPatterns\FactoryMethodPatternWebDriverCustom\WebDriverProducts\DniproDriver.cs" />
+    <Compile Include="_CreationalPatterns\FactoryMethodPatternWebDriverCustom\WebDriverProducts\KyivDriver.cs" />
+    <Compile Include="_CreationalPatterns\SingletonDesignPattern\Simple\SingletonSimple.cs" />
     <Compile Include="_StructuralPatterns\AdapterPattern\Adaptee.cs" />
     <Compile Include="_StructuralPatterns\AdapterPattern\Adapter.cs" />
     <Compile Include="_StructuralPatterns\AdapterPattern\Target.cs" />
@@ -196,15 +230,12 @@
     <Compile Include="_StructuralPatterns\Proxy\NewServerProxy.cs" />
     <Compile Include="_StructuralPatterns\Proxy\Server.cs" />
     <Compile Include="_CreationalPatterns\SingletonDesignPattern\ISingletonContainer.cs" />
-    <Compile Include="_CreationalPatterns\SingletonDesignPattern\SingletonDataContainer.cs" />
+    <Compile Include="_CreationalPatterns\SingletonDesignPattern\WithLazyInitialization\SingletonDataContainerWithLazyInit.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="_BehavioralPatterns\NullObjectDesignPattern\" />
-    <Folder Include="_BehavioralPatterns\RepositoryDesignPattern\" />
-    <Folder Include="_BehavioralPatterns\VisitorDesignPattern\" />
     <Folder Include="_ConcurrencyPatterns\LockDesignPattern\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
