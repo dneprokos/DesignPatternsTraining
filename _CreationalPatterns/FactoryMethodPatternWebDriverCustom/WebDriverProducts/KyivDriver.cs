@@ -5,6 +5,8 @@ namespace DesignPatternsTraining._CreationalPatterns.FactoryMethodPatternWebDriv
 {
     public class KyivDriver : ICustomWebDriver
     {
+        private string text = "KyivDriver";
+
         public void Get(string url)
         {
             Console.WriteLine(string.Format("User opens {0} page", url));
@@ -12,12 +14,15 @@ namespace DesignPatternsTraining._CreationalPatterns.FactoryMethodPatternWebDriv
 
         public string GetTitle()
         {
-            return "KyivDriver title";
+            var title = string.Format("{0} title", text);
+
+            Console.WriteLine(title);
+            return title;
         }
 
         public void Quit()
         { 
-            Console.WriteLine(string.Format("Quit KyivDriver driver"));
+            Console.WriteLine(string.Format("Quit {0} driver", text));
         }
     }
 }

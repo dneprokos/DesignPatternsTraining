@@ -6,7 +6,7 @@ namespace DesignPatternsTraining
     {
         static void Main(string[] args)
         {
-            CallCreationalDesignPattern.SingletonSimpleExample();
+            CallCreationalDesignPattern.AbstractFactoryInTesting();
             Console.ReadLine();
         }
     }

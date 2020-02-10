@@ -1,10 +1,15 @@
 ﻿using DesignPatternsTraining._CreationalPatterns.AbstractFactoryDesignPattern2.AbstractFactory;
 using DesignPatternsTraining._CreationalPatterns.AbstractFactoryDesignPattern2.ConcreateFactory;
+using DesignPatternsTraining._CreationalPatterns.AbstractFactoryInTesting.AbstractFactory;
+using DesignPatternsTraining._CreationalPatterns.AbstractFactoryInTesting.ConcreateDateBaseManagers.SqlManagers;
+using DesignPatternsTraining._CreationalPatterns.AbstractFactoryInTesting.ConcreateFactory;
 using DesignPatternsTraining._CreationalPatterns.BuilderDesignPatternWithPerson.MessageBuilderInterfaces;
 using DesignPatternsTraining._CreationalPatterns.BuilderDesignPatternWithPerson.MessageBuilders;
 using DesignPatternsTraining._CreationalPatterns.FactoryMethodPatternWebDriverCustom.AbstractProduct;
 using DesignPatternsTraining._CreationalPatterns.FactoryMethodPatternWebDriverCustom.WebDriverFactory;
+using DesignPatternsTraining._CreationalPatterns.PrototypeDesignPattern.PrototypeInTesting;
 using DesignPatternsTraining._CreationalPatterns.SingletonDesignPattern.Simple;
+using DesignPatternsTraining._CreationalPatterns.SingletonDesignPattern.SingletonInTesting;
 using DesignPatternsTraining.AbstractFactoryDesignPattern;
 using DesignPatternsTraining.BuilderDesignPattern;
 using DesignPatternsTraining.DependencyInjection;
@@ -20,6 +25,14 @@ namespace DesignPatternsTraining
 {
     public class CallCreationalDesignPattern
     {
+        public static void SingletonTestExample() 
+        {
+            ICustomWebDriver driver = WebDriverInitialization.Instance.GetDriver();
+            
+            driver.GetTitle();
+            driver.Quit();
+        }
+
         public static void SingletonWithLazyInitialization()
         {
             var db = SingletonDataContainerWithLazyInit.Instance;
@@ -167,6 +180,38 @@ namespace DesignPatternsTraining
             Console.WriteLine("Dessert: " + dessert.GetType().Name);
         }
 
+
+        public static void AbstractFactoryInTesting()
+        {
+            Console.WriteLine("Which database you want to use? (M)ongo or (S)ql?");
+            char input = Console.ReadKey().KeyChar;
+            Console.WriteLine("\n");
+
+            IDataBaseSetupFactory factory;
+
+            switch (input)
+            {
+                case 'M':
+                    factory = new MongoFactory();
+                    break;
+
+                case 'S':
+                    factory = new SqlFactory();
+                    break;
+
+                default:
+                    throw new NotImplementedException();
+            }
+
+            //Data will be created in appropriate database
+            factory.CreateAccountManager().CreateAccount();
+            factory.CreateAccountManager().DeleteAccount();
+
+
+            //Account will be created at SQL
+            new SqlAccountsManager().CreateAccount();
+        }
+
         public static void PoolObjectCall()
         {
             //Get object first time and show data
@@ -194,6 +239,16 @@ namespace DesignPatternsTraining
             ConcretePrototype2 p2 = new ConcretePrototype2("II");
             ConcretePrototype2 c2 = (ConcretePrototype2)p2.Clone();
             Console.WriteLine("Cloned: {0}", c2.Id);
+        }
+
+        public static void PrototypeTest()
+        {
+            Person person = new Person("Alan", "Smith", new DateTime(1986, 01, 01));
+            person.ShowUserDetails();
+
+            IPersonPrototype person2 = person.Clone();
+            person.FirstName = "David";
+            person.ShowUserDetails();
         }
     }
 }
