@@ -14,7 +14,7 @@ namespace DesignPatternsTraining._CreationalPatterns.AbstractFactoryInTesting.Co
         public void DeleteAccount()
         {
             Console.WriteLine("#####Account Creation#####");
-            Console.WriteLine("Account was created from Mongo DB\n");
+            Console.WriteLine("Account was deleted from Mongo DB\n");
         }
     }
 }

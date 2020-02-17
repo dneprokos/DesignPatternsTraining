@@ -6,7 +6,7 @@ namespace DesignPatternsTraining
     {
         static void Main(string[] args)
         {
-            CallCreationalDesignPattern.AbstractFactoryInTesting();
+            CallCreationalDesignPattern.FactoryMethodWithWebDriverExample();
             Console.ReadLine();
         }
     }

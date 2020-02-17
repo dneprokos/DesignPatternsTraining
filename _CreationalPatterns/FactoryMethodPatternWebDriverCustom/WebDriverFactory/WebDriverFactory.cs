@@ -1,5 +1,6 @@
 ﻿using DesignPatternsTraining._CreationalPatterns.FactoryMethodPatternWebDriverCustom.AbstractProduct;
 using DesignPatternsTraining._CreationalPatterns.FactoryMethodPatternWebDriverCustom.WebDriverProducts;
+using System;
 
 namespace DesignPatternsTraining._CreationalPatterns.FactoryMethodPatternWebDriverCustom.WebDriverFactory
 {
@@ -18,8 +19,13 @@ namespace DesignPatternsTraining._CreationalPatterns.FactoryMethodPatternWebDriv
                 case "dniprodriver":
                     realDriver = new DniproDriver();
                     break;
+                case "":
+                    realDriver = new KyivDriver();
+                    Console.WriteLine("Driver cannot be empty. Driver was set to KyivDriver");
+                    break;
                 default:
-                    realDriver = new DniproDriver(driver);
+                    realDriver = new KyivDriver();
+                    Console.WriteLine("Driver cannot be null. Driver was set to KyivDriver");
                     break;
 
             }

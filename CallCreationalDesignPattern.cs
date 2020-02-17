@@ -75,9 +75,9 @@ namespace DesignPatternsTraining
         {
             Console.WriteLine("Please select what driver do you want to use?");
             string driverName = Console.ReadLine();
-            Console.WriteLine(driverName);
 
             ICustomWebDriver driver = WebDriverFactory.CreateDriver(driverName);
+            driver.GetTitle();
             driver.Quit();
         }
 
