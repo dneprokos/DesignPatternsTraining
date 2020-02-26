@@ -1,6 +1,7 @@
 ﻿using DesignPatternsTraining._CreationalPatterns.AbstractFactoryDesignPattern2.AbstractFactory;
 using DesignPatternsTraining._CreationalPatterns.AbstractFactoryDesignPattern2.ConcreateFactory;
 using DesignPatternsTraining._CreationalPatterns.AbstractFactoryInTesting.AbstractFactory;
+using DesignPatternsTraining._CreationalPatterns.AbstractFactoryInTesting.AbstractFactoryImplementation;
 using DesignPatternsTraining._CreationalPatterns.AbstractFactoryInTesting.ConcreateDateBaseManagers.SqlManagers;
 using DesignPatternsTraining._CreationalPatterns.AbstractFactoryInTesting.ConcreateFactory;
 using DesignPatternsTraining._CreationalPatterns.BuilderDesignPatternWithPerson.MessageBuilderInterfaces;
@@ -28,9 +29,11 @@ namespace DesignPatternsTraining
         public static void SingletonTestExample() 
         {
             ICustomWebDriver driver = WebDriverInitialization.Instance.GetDriver();
-            
+            ICustomWebDriver driver2 = WebDriverInitialization.Instance.GetDriver();
+
             driver.GetTitle();
             driver.Quit();
+            Console.WriteLine("driver == driver2: " + driver.Equals(driver2)); 
         }
 
         public static void SingletonWithLazyInitialization()
@@ -183,33 +186,34 @@ namespace DesignPatternsTraining
 
         public static void AbstractFactoryInTesting()
         {
-            Console.WriteLine("Which database you want to use? (M)ongo or (S)ql?");
+            IDataBaseSetupFactory dbType = GetDataBaseType();
+            var createTestData = new SetupDataBaseFactory(dbType);
+            createTestData.Run();
+                       
+            //Direct creation example
+            new SqlAccountsManager().CreateAccount();
+        }
+
+        private static IDataBaseSetupFactory GetDataBaseType() {
+            //Probably should be get from configuration
+            Console.WriteLine("Choise DB Type you want to use? (M)ongo or (S)ql?");
             char input = Console.ReadKey().KeyChar;
             Console.WriteLine("\n");
 
-            IDataBaseSetupFactory factory;
+            IDataBaseSetupFactory dbType;
 
             switch (input)
             {
                 case 'M':
-                    factory = new MongoFactory();
+                    dbType = new MongoFactory();
                     break;
-
                 case 'S':
-                    factory = new SqlFactory();
+                    dbType = new SqlFactory();
                     break;
-
                 default:
-                    throw new NotImplementedException();
+                    throw new NotImplementedException("Not Implemented. So what?");
             }
-
-            //Data will be created in appropriate database
-            factory.CreateAccountManager().CreateAccount();
-            factory.CreateAccountManager().DeleteAccount();
-
-
-            //Account will be created at SQL
-            new SqlAccountsManager().CreateAccount();
+            return dbType;
         }
 
         public static void PoolObjectCall()

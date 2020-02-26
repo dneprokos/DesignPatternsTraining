@@ -6,6 +6,7 @@ namespace DesignPatternsTraining._CreationalPatterns.AbstractFactoryInTesting.Co
 {
     public class SqlFactory : IDataBaseSetupFactory
     {
+   
         public IAccountsManager CreateAccountManager()
         {
             return new SqlAccountsManager();
@@ -15,5 +16,6 @@ namespace DesignPatternsTraining._CreationalPatterns.AbstractFactoryInTesting.Co
         {
             return new SqlOrdersManager();
         }
+        
     }
 }

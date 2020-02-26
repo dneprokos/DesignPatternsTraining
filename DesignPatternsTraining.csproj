@@ -132,6 +132,7 @@
     <Compile Include="_CreationalPatterns\AbstractFactoryDesignPattern\Product\SamsungGuru.cs" />
     <Compile Include="_CreationalPatterns\AbstractFactoryInTesting\AbstractDataBaseManagers\IAccountsManager.cs" />
     <Compile Include="_CreationalPatterns\AbstractFactoryInTesting\AbstractDataBaseManagers\IOrdersManager.cs" />
+    <Compile Include="_CreationalPatterns\AbstractFactoryInTesting\AbstractFactoryImplementation\SetupDataBaseFactory.cs" />
     <Compile Include="_CreationalPatterns\AbstractFactoryInTesting\AbstractFactory\IDataBaseSetupFactory.cs" />
     <Compile Include="_CreationalPatterns\AbstractFactoryInTesting\ConcreateDateBaseManagers\MongoManagers\MongoAccountsManager.cs" />
     <Compile Include="_CreationalPatterns\AbstractFactoryInTesting\ConcreateDateBaseManagers\MongoManagers\MongoOrdersManager.cs" />
